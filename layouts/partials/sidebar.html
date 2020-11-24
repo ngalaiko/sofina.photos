@@ -1,0 +1,18 @@
+<aside>
+    <ul>
+        {{ range where .Site.RegularPages "Section" "projects" }}
+            <li>
+                <a href="{{ .URL }}">
+                    <span>{{ .Title }}</span>
+                </a>
+            </li>
+        {{ end }}
+        {{ range .Site.Menus.main }}
+            <li>
+                <a href="{{ .URL }}">
+                    <span>{{ i18n .Identifier }}</span>
+                </a>
+            </li>
+        {{ end }}
+    </ul>
+</aside>

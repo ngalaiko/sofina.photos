@@ -1,0 +1,23 @@
+baseURL: "http://example.org/"
+defaultContentLanguage: "en"
+
+menu:
+  main:
+  - identifier: menu_home
+    url: /
+    weight: 1
+  - identifier: menu_about
+    url: /about/
+    weight: 2
+
+languages:
+  en:
+    title: "Sofina Daria"
+    contentDir: "content/en"
+    languageName: "English"
+    languageCode: "en-US"
+  ru:
+    title: "Софина Дарья"
+    contentDir: "content/ru"
+    languageName: "Русский"
+    languageCode: "ru-RU"
