@@ -32,6 +32,7 @@ body {
     }
 }
 
+// Smaller screens
 @media (max-width: 1024px) {
     .photos {
         -moz-column-count:    2;
@@ -40,7 +41,16 @@ body {
     }
 }
 
+// Mobile
 @media (max-width: 480px) {
+    body {
+        flex-wrap: wrap;
+    }
+
+    aside {
+        width: 100%;
+    }
+
     .photos {
         -moz-column-count:    1;
         -webkit-column-count: 1;
