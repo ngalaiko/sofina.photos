@@ -1,9 +1,10 @@
 <aside>
     <ul>
+        {{- $currentPage := . -}}
 
         <!-- list of meny entries -->
         {{- range .Site.Menus.main -}}
-            <li>
+        <li class="{{ if eq .URL $currentPage.RelPermalink }}current{{ end }}">
                 <a href="{{- .URL -}}">
                     <span>{{- i18n .Identifier -}}</span>
                 </a>
@@ -11,11 +12,12 @@
         {{- end -}}
 
         <!-- expandable list of projects -->
-        <li class="dropdown">
+        {{- $isProject := eq .Type "projects" }}
+        <li class="{{ if not $isProject }}dropdown{{ end }}">
             Projects
-            <ul class="dropdown-content">
+            <ul class="{{ if not $isProject }}dropdown-content{{ end }}">
                 {{- range where .Site.RegularPages "Section" "projects" -}}
-                <li>
+                <li class="{{ if eq .RelPermalink $currentPage.RelPermalink }}current{{ end }}">
                     <a href="{{- .RelPermalink -}}">
                         <span>{{- .Title -}}</span>
                     </a>
