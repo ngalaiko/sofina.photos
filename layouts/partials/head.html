@@ -1,4 +1,57 @@
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Search -->
+    {{- with .Params.robotsdisallow -}}
+        <meta name="robots" content="noindex, nofollow, noarchive">
+        <meta name="googlebot" content="noindex, nofollow, noarchive">
+    {{- else -}}
+        <meta name="robots" content="index, follow, archive">
+        <meta name="googlebot" content="index, follow, archive">
+    {{- end -}}
+    <meta name="google-site-verification" content="F9RcOWAMBoVwqvD5jTgel4B0BXc4H5-AV3v4F0isKMs" >
+    <meta name="yandex-verification" content="3e3ef08487253542" >
+    <meta name="rating" content="General">
+    <meta name="description" content="{{ .Site.Author.description }}">
+
+    <link rel="canonical" href="{{ .Permalink }}">
+    <link rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">
+
     <title>{{ .Site.Title }}</title>
+
+    <!-- Resources -->
+    {{- $style := resources.Get "css/style.scss" | toCSS | minify | fingerprint -}}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}">
+    {{- $hoverontouch := resources.Get "js/hoverontouch.js" | minify | fingerprint -}}
+    <script src="{{ $hoverontouch.RelPermalink }}"></script>
+
+    {{- if .IsPage -}}
+        <!-- Navigation -->
+        {{- with index (first 1 .Site.RegularPages) 0 -}}
+            <link rel="first" href="{{- .Permalink -}}">
+        {{- end -}}
+        {{- with index (last 1 .Site.RegularPages) 0 -}}
+            <link rel="last" href="{{- .Permalink -}}">
+        {{- end -}}
+        {{- with .Site.RegularPages.Next . -}}
+            <link rel="next" href="{{- .Permalink -}}">
+        {{- end -}}
+        {{- with .Site.RegularPages.Prev . -}}
+            <link rel="prev" href="{{- .Permalink -}}">
+        {{- end -}}
+    {{- end -}}
+
+    <!-- Prefetch -->
+    <link rel="dns-prefetch" href="{{ strings.TrimLeft "http:" .Site.BaseURL | strings.TrimRight "/" }}">
+    <link rel="preconnect" href="{{ .Site.BaseURL }}">
+    <link rel="subresource" href="{{ $style.RelPermalink }}">
+    <link rel="subresource" href="{{ $hoverontouch.RelPermalink }}">
+
+    {{ if .IsTranslated }}
+        <!-- Translations -->
+        {{ range .Translations }}
+        <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" title="{{ .Language.LanguageName }}">
+        {{ end }}
+    {{ end }}
 </head>

@@ -1,3 +1,28 @@
-{{ define "main" }}
-    {{ .Content }}
-{{ end }}
+{{- define "content" -}}
+    <section class="photos">
+        {{- $pages := where .Site.Pages "Kind" "page" -}}
+        {{- $projects := where $pages "Section" "projects" -}}
+        {{- range $projects -}}
+            {{- $project := . -}}
+            <a href="{{- .RelPermalink -}}" class="hoverontouch">
+                {{- $resources := where .Resources "ResourceType" "image" }}
+                {{- $hasResources := len $resources | ne 0 -}}
+                {{- if $hasResources -}}
+                    {{- $firstImage := index $resources 0 -}}
+                    {{- $thumbnail := $firstImage.Fill "980x980 Smart" -}}
+                    <figure class="caption">
+                        <img src="{{- $thumbnail.RelPermalink -}}">
+                        <figcaption>
+                            <h3 class="caption-text">{{- $project.Date.Format "2006" -}}</h2>
+                            <h2 class="caption-text">{{- .Title -}}</h2>
+                        </figcaption>
+                    </figure>
+                {{- end -}}
+            </a>
+        {{- end -}}
+    </section>
+
+    <script type="text/javascript">
+        var HoverOnTouch = new HoverOnTouch();
+    </script>
+{{- end -}}

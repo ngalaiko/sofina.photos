@@ -1,0 +1,29 @@
+baseURL: "https://sofina.photos/"
+defaultContentLanguage: "en"
+enableRobotsTXT: true
+disableKinds:
+- taxonomy
+- term
+- section
+
+languages:
+  en:
+    title: "Sofina Daria"
+    contentDir: "content/en"
+    languageName: "English"
+    languageCode: "en-US"
+    author:
+      name: "Sofina Daria"
+      description: "A photographer"
+    params:
+      licenceURL: "https://creativecommons.org/licenses/by-nc/4.0"
+  ru:
+    title: "Софина Дарья"
+    contentDir: "content/ru"
+    languageName: "Русский"
+    languageCode: "ru-RU"
+    author:
+      name: "Софина Дарья"
+      description: "Фотографиня"
+    params:
+      licenceURL: "https://creativecommons.org/licenses/by-nc/4.0/deed.ru"

@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html>
-	{{ partial "head" . }}
+	{{- partial "head" . -}}
 	<body>
-		{{ partial "sidebar" . }}
-		{{ block "main" . }}{{ end }}
+		{{- partial "nav" . -}}
+        <main class="main">
+            {{- block "header" . -}}
+            {{- end -}}
+            <article class="page">
+                {{- block "content" . -}}
+                {{- end -}}
+            </article>
+            {{- partial "footer" . -}}
+        </main>
 	</body>
 </html>

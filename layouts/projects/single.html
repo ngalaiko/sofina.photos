@@ -1,0 +1,23 @@
+{{- define "header" -}}
+    <header>
+        <h1 class="title">{{ .Title }}</h1>
+    </header>
+{{- end -}}
+
+{{- define "content" -}}
+    {{- $photos := .Resources.ByType "image" }}
+    {{- $single := eq 1 (len $photos) -}}
+    {{- if $single -}}
+        <section class="photos one">
+    {{- else -}}
+        <section class="photos">
+    {{- end -}}
+        {{- range $photos -}}
+            {{- $image := .Fit "2400x1600 jpg" -}}
+            {{- if gt .Height .Width  -}}
+                {{- $image = .Fit "1600x2400 jpg" -}}
+            {{- end -}}
+            <img src="{{- $image.RelPermalink -}}">
+        {{- end -}}
+    </section>
+{{- end -}}

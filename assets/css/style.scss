@@ -1,0 +1,174 @@
+// Predefined
+
+$background: #FBFFFE;
+$text: #090809;
+$highlight: #F40000;
+$max-width: 980px;
+
+/* poiret-one-regular - latin_cyrillic */
+@font-face {
+  font-family: 'Poiret One';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/poiret-one-latin_cyrillic-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('/fonts/poiret-one-latin_cyrillic-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/fonts/poiret-one-latin_cyrillic-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/fonts/poiret-one-latin_cyrillic-regular.woff') format('woff'), /* Modern Browsers */
+       url('/fonts/poiret-one-latin_cyrillic-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/fonts/poiret-one-latin_cyrillic-regular.svg#PoiretOne') format('svg'); /* Legacy iOS */
+}
+
+$font-family: 'Poiret One', sans-serif;
+
+// General layout
+
+html {
+    background-color: $background;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    max-width: $max-width;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    article {
+        flex-grow: 1;
+    }
+}
+
+.not-found {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header {
+    h1 {
+        margin: 0;
+        text-align: center;
+    }
+    font-family: $font-family;
+    font-size: x-large;
+    padding: 0em 1em 1em 1em;
+}
+
+footer {
+    text-align: center;
+    color: $text;
+    font-family: sans-serif;
+    font-size: small;
+    padding: 1em;
+}
+
+a {
+    text-decoration: none;
+    color: $text;
+    background-image: linear-gradient($highlight, $highlight);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
+
+    &:hover, &:focus {
+        background-size: 100% 2px;
+    }
+}
+
+nav {
+    display: flex;
+    padding: 1em;
+    align-items: baseline;
+    justify-content: space-between;
+    font-size: large;
+
+    a {
+        margin: 0;
+        font-family: $font-family;
+        font-weight: 700;
+    }
+}
+
+// Captions
+
+.caption {
+    position: relative;
+    margin: 0;
+
+    cursor: pointer;
+
+    img {
+        opacity: 1;
+    }
+
+    figcaption {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        width: 83%;
+        height: 83%;
+        transition: .2s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: $background;
+    }
+
+    &:hover figcaption {
+        opacity: 0.9;
+    }
+
+    .caption-text {
+        font-family: $font-family;
+        color: $text;
+    }
+}
+
+.hoverontouch--aktiv {
+    figure {
+        figcaption {
+            opacity: 0.9;
+        }
+    }
+}
+
+// Photos tiles
+
+.photos {
+    line-height: 0;
+    
+    column-count: 2;
+    column-gap: 0px;  
+
+    img {
+        width: 100% !important;
+        height: auto !important;
+    }
+}
+
+.one {
+    column-count: 1;
+}
+
+// Mobile
+@media (max-width: 480px) {
+    .photos {
+        column-count: 1;
+    }
+}

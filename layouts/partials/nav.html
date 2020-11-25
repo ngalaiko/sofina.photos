@@ -1,0 +1,11 @@
+<nav>
+    <a href="{{ "/" | relLangURL }}">
+        {{- .Site.Title -}}
+    </a>
+
+    {{ if .IsTranslated }}
+        {{ range .Translations }}
+            <a class="lang" href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+        {{ end}}
+    {{ end }}
+</nav>
