@@ -1,12 +1,5 @@
 <aside>
     <ul>
-        {{ range where .Site.RegularPages "Section" "projects" }}
-            <li>
-                <a href="{{ .URL }}">
-                    <span>{{ .Title }}</span>
-                </a>
-            </li>
-        {{ end }}
         {{ range .Site.Menus.main }}
             <li>
                 <a href="{{ .URL }}">
@@ -14,5 +7,16 @@
                 </a>
             </li>
         {{ end }}
+        <li>Projects
+            <ul>
+                {{ range where .Site.RegularPages "Section" "projects" }}
+                    <li>
+                        <a href="{{ .RelPermalink }}">
+                            <span>{{ .Title }}</span>
+                        </a>
+                    </li>
+                {{ end }}
+            </ul>
+        </li>
     </ul>
 </aside>
