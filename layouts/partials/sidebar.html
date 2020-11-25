@@ -1,21 +1,26 @@
 <aside>
     <ul>
-        {{ range .Site.Menus.main }}
+
+        <!-- list of meny entries -->
+        {{- range .Site.Menus.main -}}
             <li>
-                <a href="{{ .URL }}">
-                    <span>{{ i18n .Identifier }}</span>
+                <a href="{{- .URL -}}">
+                    <span>{{- i18n .Identifier -}}</span>
                 </a>
             </li>
-        {{ end }}
-        <li>Projects
-            <ul>
-                {{ range where .Site.RegularPages "Section" "projects" }}
-                    <li>
-                        <a href="{{ .RelPermalink }}">
-                            <span>{{ .Title }}</span>
-                        </a>
-                    </li>
-                {{ end }}
+        {{- end -}}
+
+        <!-- expandable list of projects -->
+        <li class="dropdown">
+            Projects
+            <ul class="dropdown-content">
+                {{- range where .Site.RegularPages "Section" "projects" -}}
+                <li>
+                    <a href="{{- .RelPermalink -}}">
+                        <span>{{- .Title -}}</span>
+                    </a>
+                </li>
+                {{- end -}}
             </ul>
         </li>
     </ul>
