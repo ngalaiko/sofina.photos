@@ -1,5 +1,15 @@
-body {
+html, body {
     display: flex;
+    height: 100%;
+    margin: 0;
+}
+
+aside, main {
+    display: flex;
+}
+
+main {
+    overflow-y: scroll;
 }
 
 .dropdown {
@@ -49,6 +59,10 @@ body {
 
     aside {
         width: 100%;
+    }
+
+    main {
+        overflow-y: unset;
     }
 
     .photos {
