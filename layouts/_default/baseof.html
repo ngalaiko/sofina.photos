@@ -3,7 +3,16 @@
 	{{- partial "head" . -}}
 	<body>
 		{{- partial "sidebar" . -}}
-		{{- block "main" . -}}
-        {{- end -}}
+        <main class="main">
+            <article class="page">
+                <header>
+                    <h1>{{- .Title -}}</h1>
+                </header>
+                <div class="content">
+                    {{- block "content" . -}}
+                    {{- end -}}
+                </div>
+            </article>
+        </main>
 	</body>
 </html>
