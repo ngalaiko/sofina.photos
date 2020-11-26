@@ -28,6 +28,12 @@ main {
     padding: 1em;
 }
 
+article, .content, photos {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
 // Menu
 
 aside {
@@ -79,6 +85,7 @@ aside {
 // Photos tiles
 .photos {
     line-height: 0;
+    margin: auto;
     
     column-count: 3;
     column-gap: 0px;  
