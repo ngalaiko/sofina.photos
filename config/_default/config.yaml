@@ -3,9 +3,6 @@ defaultContentLanguage: "en"
 
 menu:
   main:
-  - identifier: menu_home
-    url: /
-    weight: 1
   - identifier: menu_about
     url: /about/
     weight: 2

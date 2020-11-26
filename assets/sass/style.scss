@@ -14,6 +14,7 @@ html, body {
 
 aside, main {
     display: flex;
+    flex-direction: column;
 }
 
 aside {
