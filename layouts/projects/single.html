@@ -1,7 +1,4 @@
 {{- define "content" -}}
-    <div>
-        {{- .Content -}}
-    </div>
     <section class="photos">
         {{- range .Resources.ByType "image" -}}
             <img src="{{- .RelPermalink -}}">

@@ -6,7 +6,8 @@
         <main class="main">
             <article class="page">
                 <header>
-                    <h1>{{- .Title -}}</h1>
+                    {{- block "header" . -}}
+                    {{- end -}}
                 </header>
                 <div class="content">
                     {{- block "content" . -}}
