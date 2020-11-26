@@ -9,6 +9,9 @@ menu:
   - identifier: menu_about
     url: /about/
     weight: 2
+  - identifier: menu_contact
+    url: /contact/
+    weight: 3
 
 languages:
   en:
